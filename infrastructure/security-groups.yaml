@@ -32,7 +32,7 @@ Resources:
           ToPort: 445
           CidrIp: 0.0.0.0/0
           Description: Allow Egress traffic from the world on port 445
-      VpcId: vpc-1234
+      VpcId: vpc-12f9c768
 
 
 
