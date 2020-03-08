@@ -1,0 +1,33 @@
+version: 0.2
+
+env:
+  variables:
+    CFN_TEMPLATES: |
+      s3
+      security-groups
+
+phases:
+  install:
+    runtime-versions:
+      ruby: 2.6
+    commands:
+      - echo 'Build' action Install phase - install testing dependencies
+      - gem install cfn-nag
+
+  pre_build:
+    commands:
+      - echo Linting started on `date`
+      - |
+        for cfn_template in $CFN_TEMPLATES; do
+          echo "Scanning CloudFormation template $cfn_template"
+          cfn_nag_scan --input-path infrastructure/$cfn_template.yaml
+        done
+
+  build:
+    commands:
+      - aws s3 sync rules s3://cfn-nag-rules-demo/rules
+
+artifacts:
+  files:
+    - '**/*'
+type: zip

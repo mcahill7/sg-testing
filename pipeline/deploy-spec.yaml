@@ -1,0 +1,26 @@
+version: 0.2
+
+env:
+  variables:
+    CFN_TEMPLATES: |
+      s3
+      security-groups
+
+phases:
+  install:
+    runtime-versions:
+      ruby: 2.6
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - |
+        for cfn_template in $CFN_TEMPLATES; do
+          echo "Deploying CloudFormation template $cfn_template"
+          aws cloudformation deploy --no-fail-on-empty-changeset --template-file infrastructure/$cfn_template.yaml --stack-name $cfn_template --capabilities CAPABILITY_NAMED_IAM
+        done
+
+artifacts:
+  files:
+    - '**/*'
+type: zip
