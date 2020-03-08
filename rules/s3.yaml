@@ -1,5 +1,5 @@
 ---
     repo_class_name: S3BucketBasedRuleRepo
     repo_arguments:
-      s3_bucket_name: cfn-nag-rules-demo
+      s3_bucket_name: cfn-nag-rules-fav
       prefix: /rules

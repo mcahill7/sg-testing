@@ -24,7 +24,7 @@ phases:
 
   build:
     commands:
-      - aws s3 sync rules s3://cfn-nag-rules-demo/rules
+      - aws s3 sync rules s3://cfn-nag-rules-fav/rules
 
 artifacts:
   files:
