@@ -3,3 +3,4 @@
     repo_arguments:
       s3_bucket_name: cfn-nag-rules-fav
       prefix: /rules
+      index_lifetime: 1m
