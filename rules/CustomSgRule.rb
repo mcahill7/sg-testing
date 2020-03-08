@@ -1,7 +1,7 @@
 require 'cfn-nag/violation'
 require 'cfn-nag/base_rule'
 
-class CustomSgRule < CfnNag::BaseRule
+class CustomSseRule < CfnNag::BaseRule
   def rule_text
     'SG found with cidr open to world on ingress and port outside of 80 and 443' 
   end
@@ -11,7 +11,7 @@ class CustomSgRule < CfnNag::BaseRule
   end
 
   def rule_id
-    'F888'
+    'F8889'
   end
 
   ##
@@ -27,11 +27,20 @@ class CustomSgRule < CfnNag::BaseRule
     end
 
     violating_ingresses = cfn_model.standalone_ingress.select do |standalone_ingress|
-      #violating_ingress(standalone_ingress)
-        true
+      violating_ingress(standalone_ingress)
     end
 
     violating_security_groups.map(&:logical_resource_id) + violating_ingresses.map(&:logical_resource_id)
+  end
+
+  def violating_ingress(ingress)
+    if (ingress.fromPort.to_i != 80 && ingress.toPort.to_i != 80) &&
+        (ingress.fromPort.to_i != 443 && ingress.toPort.to_i != 443) &&
+        (ingress.cidrIp == '0.0.0.0/0')
+        return true
+    else
+        return false
+    end
   end
 
 end
