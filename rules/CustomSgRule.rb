@@ -27,23 +27,11 @@ class CustomSseRule < CfnNag::BaseRule
     end
 
     violating_ingresses = cfn_model.standalone_ingress.select do |standalone_ingress|
-      violating_ingress(standalone_ingress)
+      #violating_ingress(standalone_ingress)
+      ip4_open?(standalone_ingress) || ip6_open?(standalone_ingress)
     end
 
     violating_security_groups.map(&:logical_resource_id) + violating_ingresses.map(&:logical_resource_id)
   end
 
-  private
-
-  def violating_ingress(ingress)
-#    if  (ip4_open?(ingress) || ip6_open?(ingress)) and
-#        (ingress.fromPort.is_a?(Integer) || ingress.fromPort.is_a?(String)) and
-#            (ingress.toPort.is_a?(Integer) || ingress.toPort.is_a?(String)) 
-
-#        (ingress.fromPort.to_i != 80 && ingress.toPort.to_i != 80) ||
-#            (ingress.fromPort.to_i != 443 && ingress.toPort.to_i != 443)
-#    else
-    false
-    #end
-  end
 end
