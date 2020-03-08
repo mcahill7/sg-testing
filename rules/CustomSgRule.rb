@@ -1,7 +1,7 @@
 require 'cfn-nag/violation'
 require 'cfn-nag/base_rule'
 
-class CustomSseRule < CfnNag::BaseRule
+class CustomSgRule < CfnNag::BaseRule
   def rule_text
     'SG found with cidr open to world on ingress and port outside of 80 and 443' 
   end
@@ -11,7 +11,7 @@ class CustomSseRule < CfnNag::BaseRule
   end
 
   def rule_id
-    'F8889'
+    'F888'
   end
 
   ##
