@@ -4,3 +4,4 @@
       s3_bucket_name: cfn-nag-rules-fav
       prefix: /rules
       index_lifetime: 1m
+      aws_profile: default

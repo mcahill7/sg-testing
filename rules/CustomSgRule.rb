@@ -11,7 +11,7 @@ class CustomSgRule < CfnNag::BaseRule
   end
 
   def rule_id
-    'F8889'
+    'F888'
   end
 
   ##
@@ -28,7 +28,7 @@ class CustomSgRule < CfnNag::BaseRule
 
     violating_ingresses = cfn_model.standalone_ingress.select do |standalone_ingress|
       #violating_ingress(standalone_ingress)
-      ip4_open?(standalone_ingress) || ip6_open?(standalone_ingress)
+      return true
     end
 
     violating_security_groups.map(&:logical_resource_id) + violating_ingresses.map(&:logical_resource_id)
