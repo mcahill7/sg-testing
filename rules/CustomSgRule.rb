@@ -36,14 +36,14 @@ class CustomSseRule < CfnNag::BaseRule
   private
 
   def violating_ingress(ingress)
-    if  (ip4_open?(ingress) || ip6_open?(ingress)) and
-        (ingress.fromPort.is_a?(Integer) || ingress.fromPort.is_a?(String)) and
-            (ingress.toPort.is_a?(Integer) || ingress.toPort.is_a?(String)) 
+#    if  (ip4_open?(ingress) || ip6_open?(ingress)) and
+#        (ingress.fromPort.is_a?(Integer) || ingress.fromPort.is_a?(String)) and
+#            (ingress.toPort.is_a?(Integer) || ingress.toPort.is_a?(String)) 
 
-        (ingress.fromPort.to_i != 80 && ingress.toPort.to_i != 80) ||
-            (ingress.fromPort.to_i != 443 && ingress.toPort.to_i != 443)
-    else
-        false
-    end
+#        (ingress.fromPort.to_i != 80 && ingress.toPort.to_i != 80) ||
+#            (ingress.fromPort.to_i != 443 && ingress.toPort.to_i != 443)
+#    else
+    false
+    #end
   end
 end
