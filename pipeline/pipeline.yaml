@@ -3,16 +3,16 @@ Description: Create a CI/CD Pipeline for testing and deploying SecurityGroups
 Parameters:
   RepositoryName:
     Type: String
-    Default: config-testing
+    Default: sg-testing
   RepositoryOwner:
     Type: String
     Default: mcahill7
   BranchName:
     Type: String
-    Default: sg
+    Default: master
   GitHubToken:
     Type: String
-    Default: 123
+    Default: 5808fa4e1eb4d7c2fe174419cec60ad059507fe8
   BuildAgentImage:
     Type: String
     Default: aws/codebuild/standard:2.0
