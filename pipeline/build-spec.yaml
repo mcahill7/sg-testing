@@ -15,21 +15,21 @@ phases:
 
   pre_build:
     commands:
+      - aws s3 sync rules s3://cfn-nag-rules-fav/rules
+
+  build:
+    commands:
       - echo Linting started on `date`
       - |
         for cfn_template in $CFN_TEMPLATES; do
           echo "Scanning CloudFormation template $cfn_template"
           cfn_nag_scan --input-path infrastructure/$cfn_template.yaml
         done
-        - |
+      - |
         for cfn_template in $CFN_TEMPLATES; do
           echo "Scanning CloudFormation template $cfn_template"
           cat infrastructure/$cfn_template.yaml | cfn_nag --rule-repository rules/security-controls.yaml
         done
-
-  build:
-    commands:
-      - aws s3 sync rules s3://cfn-nag-rules-fav/rules
 
 artifacts:
   files:
