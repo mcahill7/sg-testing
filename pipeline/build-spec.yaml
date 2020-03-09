@@ -15,6 +15,7 @@ phases:
 
   pre_build:
     commands:
+      - aws s3 cp infrastructure/s3.yaml s3://cfn-nag-rules-fav
       - aws s3 sync rules s3://cfn-nag-rules-fav/rules
 
   build:
