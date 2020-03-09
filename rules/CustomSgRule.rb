@@ -11,7 +11,7 @@ class CustomSgRule < CfnNag::BaseRule
   end
 
   def rule_id
-    'F888'
+    'F899'
   end
 
   ##
