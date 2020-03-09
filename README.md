@@ -7,9 +7,3 @@ To create the pipeline run the following:
 ```
 aws cloudformation create-stack --stack-name sg-pipeline --template-body file://pipeline/pipeline.yaml --capabilities CAPABILITY_NAMED_IAM
 ```
-
-## Tests
-To run tests locally run the following:
-```
-pipenv run python -m pytest tests -v
-``
