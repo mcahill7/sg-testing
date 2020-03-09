@@ -12,6 +12,7 @@ phases:
     commands:
       - echo 'Build' action Install phase - install testing dependencies
       - gem install cfn-nag
+      - rm -rf /tmp/cfn*
 
   pre_build:
     commands:
