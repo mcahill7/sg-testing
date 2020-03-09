@@ -29,7 +29,7 @@ phases:
       - |
         for cfn_template in $CFN_TEMPLATES; do
           echo "Scanning CloudFormation template $cfn_template"
-          cat infrastructure/$cfn_template.yaml | cfn_nag --rule-repository infrastructure/s3.yaml
+          cat infrastructure/$cfn_template.yaml | cfn_nag --rule-repository infrastructure/s3.yaml --debug
         done
 
 artifacts:
