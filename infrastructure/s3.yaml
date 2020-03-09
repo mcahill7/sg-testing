@@ -1,6 +1,6 @@
 ---
     repo_class_name: S3BucketBasedRuleRepo
     repo_arguments:
-      s3_bucket_name: cfn-nag-rules-fav
+      s3_bucket_name: cfn-nag-demo
       prefix: /rules
       index_lifetime: 1m
