@@ -9,27 +9,27 @@ Resources:
       SecurityGroupIngress:
         -
           IpProtocol: tcp
-          FromPort: 3389
-          ToPort: 3389
+          FromPort: 80
+          ToPort: 80
           CidrIp: 0.0.0.0/0
           Description: Allow Ingress traffic from the world on port 3389
         -
           IpProtocol: tcp
-          FromPort: 445
-          ToPort: 445
+          FromPort: 443
+          ToPort: 443
           CidrIp: 0.0.0.0/0
           Description: Allow Ingress traffic from the world on port 445
       SecurityGroupEgress:
         -
           IpProtocol: tcp
-          FromPort: 3389
-          ToPort: 3389
+          FromPort: 80
+          ToPort: 80
           CidrIp: 0.0.0.0/0
           Description: Allow Egress traffic from the world on port 3389
         -
           IpProtocol: tcp
-          FromPort: 445
-          ToPort: 445
+          FromPort: 443
+          ToPort: 443
           CidrIp: 0.0.0.0/0
           Description: Allow Egress traffic from the world on port 445
       VpcId: vpc-12f9c768
