@@ -14,9 +14,6 @@ class CustomSgRule < CfnNag::BaseRule
     'F899'
   end
 
-  ##
-  # This will behave slightly different than the legacy jq based rule which was
-  # targeted against inline ingress only
   def audit_impl(cfn_model)
     violating_security_groups = cfn_model.security_groups.select do |security_group|
       violating_ingresses = security_group.ingresses.select do |ingress|
